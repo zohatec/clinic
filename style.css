@@ -345,9 +345,33 @@ footer h4::after{content:'';position:absolute;left:0;bottom:0;width:36px;height:
 }
 @media(max-width:768px){
   section{padding:66px 0}
-  .nav-links{position:absolute;top:100%;left:0;width:100%;background:var(--surface);flex-direction:column;gap:2px;padding:14px 5% 20px;box-shadow:0 18px 30px rgba(3,42,64,.14);border-top:1.5px solid var(--border);transform:translateY(-130%);transition:.45s;z-index:-1}
-  #header.open .nav-links{transform:translateY(0)}
+                    /* 🔧 সংশোধিত মোবাইল মেনু:*/
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:var(--surface);
+    flex-direction:column;
+    gap:2px;
+    padding:14px 5% 20px;
+    box-shadow:0 18px 30px rgba(3,42,64,.14);
+    border-top:1.5px solid var(--border);
+    transform:translateY(-14px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:transform .4s ease,opacity .4s ease,visibility .4s;
+    z-index:1;
+  }
+  #header.open .nav-links{
+    transform:translateY(0);
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
   .nav-links a{padding:11px 4px;border-bottom:1px solid var(--border);font-size:15.5px}
+  .nav-links a:last-child{border-bottom:none}
   #hamburger{display:grid}
   .hide-sm{display:none}
   .form-card{padding:24px 20px}
