@@ -1,5 +1,5 @@
 /* =====================================================
-   নিরাময় হেলথ কেয়ার — main.js
+   নিরাময় হেলথ কেয়ার — main.js (সম্পূর্ণ সংস্করণ v1.1)
    বাংলা/ইংরেজি টগল, ডার্ক মোড, ফর্ম → Google Sheets
    ===================================================== */
 
@@ -21,12 +21,14 @@ const $  = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
 const BN_DIGITS = { '0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯' };
-const toBn  = s => String(s).replace(/\d/g, d => BN_DIGITS[d]);
-const fmtNum = v => LANG === 'bn' ? toBn(v.toLocaleString('en-US')) : v.toLocaleString('en-US');
+const toBn   = s => String(s).replace(/\d/g, d => BN_DIGITS[d]);
+const fmtNum = v => LANG === 'bn'
+  ? toBn(Math.round(v).toLocaleString('en-US'))
+  : Math.round(v).toLocaleString('en-US');
 
 let LANG = localStorage.getItem('nhc_lang') || 'bn';
 const t = k => (I18N[LANG] && I18N[LANG][k]) || I18N.bn[k] || k;
-const L = o => o[LANG] || o.bn; // ডাইনামিক ডাটার জন্য
+const L = o => o[LANG] || o.bn;
 
 /* ---------- ৩) অনুবাদ (i18n) ---------- */
 const I18N = {
@@ -57,7 +59,7 @@ const I18N = {
     'packages.desc':'আধুনিক যন্ত্রপাতি ও অভিজ্ঞ টেকনোলজিস্ট — নির্ভুল রিপোর্টের নিশ্চয়তা।',
     'packages.tab1':'প্যাথলজি পরীক্ষা','packages.tab2':'হেলথ প্যাকেজ',
     'packages.note':'রিপোর্ট ডেলিভারি: ২৪ ঘণ্টার মধ্যে (হার্ডকপি / ইমেইল / WhatsApp)। ঢাকার ভেতরে হোম স্যাম্পল কালেকশন সুবিধা আছে।',
-    'packages.includes':'প্যাকেজে যা থাকছে',
+    'packages.includes':'প্যাকেজে যা থাকছে','packages.allInclusive':'সব কিছু মিলিয়ে',
     'appt.eyebrow':'অ্যাপয়েন্টমেন্ট','appt.title':'অনলাইনে সিরিয়াল বুক করুন',
     'appt.desc':'ফর্ম পূরণ করুন — আমাদের প্রতিনিধি ফোনে কনফার্ম করবেন।',
     'appt.infoTitle':'চেম্বার তথ্য',
@@ -132,7 +134,7 @@ const I18N = {
     'packages.desc':'Modern equipment and experienced technologists — guaranteed accurate reports.',
     'packages.tab1':'Pathology Tests','packages.tab2':'Health Packages',
     'packages.note':'Report delivery: within 24 hours (hard copy / email / WhatsApp). Home sample collection available inside Dhaka.',
-    'packages.includes':"What's included",
+    'packages.includes':"What's included",'packages.allInclusive':'all inclusive',
     'appt.eyebrow':'Appointment','appt.title':'Book Your Serial Online',
     'appt.desc':'Fill in the form — our representative will confirm over the phone.',
     'appt.infoTitle':'Chamber Info',
@@ -211,14 +213,14 @@ const DOCTORS = [
 ];
 
 const SERVICES = [
-  { icon:'fa-user-doctor',        title:{bn:'বিশেষজ্ঞ ডাক্তারের পরামর্শ',en:'Specialist Consultation'}, desc:{bn:'অভিজ্ঞ বিশেষজ্ঞ ডাক্তারের সরাসরি পরামর্শ',en:'Direct consultation with experienced specialists'}, price:{bn:'৳ ৮০০ – ১,৫০০',en:'৳ 800 – 1,500'} },
-  { icon:'fa-video',              title:{bn:'অনলাইন পরামর্শ',en:'Online Consultation'}, desc:{bn:'ভিডিও কলে ঘরে বসেই ডাক্তারের পরামর্শ',en:'Doctor consultation via video call from home'}, price:{bn:'৳ ৫০০',en:'৳ 500'} },
-  { icon:'fa-flask-vial',         title:{bn:'প্যাথলজি ল্যাব',en:'Pathology Lab'}, desc:{bn:'আধুনিক যন্ত্রে ১০০+ পরীক্ষা',en:'100+ tests on modern machines'}, price:{bn:'৳ ১০০ থেকে',en:'From ৳ 100'} },
-  { icon:'fa-heart-pulse',        title:{bn:'ইসিজি ও ইকো',en:'ECG & Echo'}, desc:{bn:'ইসিজি, ইকোকার্ডিওগ্রাম সেবা',en:'ECG and echocardiogram services'}, price:{bn:'৳ ৪০০ থেকে',en:'From ৳ 400'} },
-  { icon:'fa-syringe',            title:{bn:'টিকাদান সেবা',en:'Vaccination'}, desc:{bn:'শিশু ও প্রাপ্তবয়স্কদের সকল টিকা',en:'All vaccines for children & adults'}, price:{bn:'৳ ৩০০ থেকে',en:'From ৳ 300'} },
-  { icon:'fa-house-medical',      title:{bn:'হোম স্যাম্পল কালেকশন',en:'Home Sample Collection'}, desc:{bn:'ঢাকার ভেতরে বাসা থেকে স্যাম্পল সংগ্রহ',en:'Sample collection from home inside Dhaka'}, price:{bn:'৳ ১০০ থেকে',en:'From ৳ 100'} },
-  { icon:'fa-notes-medical',      title:{bn:'ডায়াবেটিস ম্যানেজমেন্ট',en:'Diabetes Management'}, desc:{bn:'ফলো-আপ ও ডায়েট পরামর্শ',en:'Follow-up and diet counseling'}, price:{bn:'৳ ১,৫০০',en:'৳ 1,500'} },
-  { icon:'fa-clipboard-check',    title:{bn:'বার্ষিক হেলথ চেকআপ',en:'Annual Health Checkup'}, desc:{bn:'সম্পূর্ণ স্বাস্থ্য পরীক্ষার প্যাকেজ',en:'Complete health screening packages'}, price:{bn:'৳ ২,০০০ থেকে',en:'From ৳ 2,000'} }
+  { icon:'fa-user-doctor',     title:{bn:'বিশেষজ্ঞ ডাক্তারের পরামর্শ',en:'Specialist Consultation'}, desc:{bn:'অভিজ্ঞ বিশেষজ্ঞ ডাক্তারের সরাসরি পরামর্শ',en:'Direct consultation with experienced specialists'}, price:{bn:'৳ ৮০০ – ১,৫০০',en:'৳ 800 – 1,500'} },
+  { icon:'fa-video',           title:{bn:'অনলাইন পরামর্শ',en:'Online Consultation'}, desc:{bn:'ভিডিও কলে ঘরে বসেই ডাক্তারের পরামর্শ',en:'Doctor consultation via video call from home'}, price:{bn:'৳ ৫০০',en:'৳ 500'} },
+  { icon:'fa-flask-vial',      title:{bn:'প্যাথলজি ল্যাব',en:'Pathology Lab'}, desc:{bn:'আধুনিক যন্ত্রে ১০০+ পরীক্ষা',en:'100+ tests on modern machines'}, price:{bn:'৳ ১০০ থেকে',en:'From ৳ 100'} },
+  { icon:'fa-heart-pulse',     title:{bn:'ইসিজি ও ইকো',en:'ECG & Echo'}, desc:{bn:'ইসিজি, ইকোকার্ডিওগ্রাম সেবা',en:'ECG and echocardiogram services'}, price:{bn:'৳ ৪০০ থেকে',en:'From ৳ 400'} },
+  { icon:'fa-syringe',         title:{bn:'টিকাদান সেবা',en:'Vaccination'}, desc:{bn:'শিশু ও প্রাপ্তবয়স্কদের সকল টিকা',en:'All vaccines for children & adults'}, price:{bn:'৳ ৩০০ থেকে',en:'From ৳ 300'} },
+  { icon:'fa-house-medical',   title:{bn:'হোম স্যাম্পল কালেকশন',en:'Home Sample Collection'}, desc:{bn:'ঢাকার ভেতরে বাসা থেকে স্যাম্পল সংগ্রহ',en:'Sample collection from home inside Dhaka'}, price:{bn:'৳ ১০০ থেকে',en:'From ৳ 100'} },
+  { icon:'fa-notes-medical',   title:{bn:'ডায়াবেটিস ম্যানেজমেন্ট',en:'Diabetes Management'}, desc:{bn:'ফলো-আপ ও ডায়েট পরামর্শ',en:'Follow-up and diet counseling'}, price:{bn:'৳ ১,৫০০',en:'৳ 1,500'} },
+  { icon:'fa-clipboard-check', title:{bn:'বার্ষিক হেলথ চেকআপ',en:'Annual Health Checkup'}, desc:{bn:'সম্পূর্ণ স্বাস্থ্য পরীক্ষার প্যাকেজ',en:'Complete health screening packages'}, price:{bn:'৳ ২,০০০ থেকে',en:'From ৳ 2,000'} }
 ];
 
 const TESTS = [
@@ -236,15 +238,15 @@ const TESTS = [
 ];
 
 const PACKAGES = [
-  { icon:'fa-droplet', name:{bn:'ডায়াবেটিক প্যাকেজ',en:'Diabetic Package'}, price:{bn:'৳ ২,৫০০',en:'৳ 2,500'},
+  { icon:'fa-droplet',    name:{bn:'ডায়াবেটিক প্যাকেজ',en:'Diabetic Package'}, price:{bn:'৳ ২,৫০০',en:'৳ 2,500'},
     items:{bn:'FBS, HbA1c, লিপিড প্রোফাইল, ক্রিয়েটিনিন, প্রস্রাব রুটিন + ডায়েট কাউন্সিলিং',en:'FBS, HbA1c, Lipid Profile, Creatinine, Urine R/E + diet counseling'} },
-  { icon:'fa-heart-pulse', name:{bn:'কার্ডিয়াক চেকআপ',en:'Cardiac Checkup'}, price:{bn:'৳ ৪,৫০০',en:'৳ 4,500'},
+  { icon:'fa-heart-pulse',name:{bn:'কার্ডিয়াক চেকআপ',en:'Cardiac Checkup'}, price:{bn:'৳ ৪,৫০০',en:'৳ 4,500'},
     items:{bn:'ইসিজি, ইকোকার্ডিওগ্রাম, লিপিড প্রোফাইল + কার্ডিওলজিস্ট পরামর্শ',en:'ECG, Echocardiogram, Lipid Profile + cardiologist consult'} },
-  { icon:'fa-venus', name:{bn:'মহিলাদের হেলথ প্যাকেজ',en:"Women's Health Package"}, price:{bn:'৳ ৩,৫০০',en:'৳ 3,500'},
+  { icon:'fa-venus',      name:{bn:'মহিলাদের হেলথ প্যাকেজ',en:"Women's Health Package"}, price:{bn:'৳ ৩,৫০০',en:'৳ 3,500'},
     items:{bn:'সিবিসি, থাইরয়েড প্রোফাইল, আল্ট্রাসনোগ্রাম + গাইনি পরামর্শ',en:'CBC, Thyroid Profile, Ultrasonogram + gynae consult'} },
-  { icon:'fa-baby', name:{bn:'শিশু হেলথ প্যাকেজ',en:'Child Health Package'}, price:{bn:'৳ ২,০০০',en:'৳ 2,000'},
+  { icon:'fa-baby',       name:{bn:'শিশু হেলথ প্যাকেজ',en:'Child Health Package'}, price:{bn:'৳ ২,০০০',en:'৳ 2,000'},
     items:{bn:'সিবিসি, বৃদ্ধি মূল্যায়ন, টিকার পরামর্শ + শিশু বিশেষজ্ঞ পরামর্শ',en:'CBC, growth assessment, vaccine advice + paediatric consult'} },
-  { icon:'fa-person-cane', name:{bn:'সিনিয়র সিটিজেন প্যাকেজ',en:'Senior Citizen Package'}, price:{bn:'৳ ৫,৫০০',en:'৳ 5,500'},
+  { icon:'fa-person-cane',name:{bn:'সিনিয়র সিটিজেন প্যাকেজ',en:'Senior Citizen Package'}, price:{bn:'৳ ৫,৫০০',en:'৳ 5,500'},
     items:{bn:'ফুল বডি স্ক্রিনিং, ইসিজি, ইকো, PSA + মেডিসিন বিশেষজ্ঞ পরামর্শ',en:'Full body screening, ECG, Echo, PSA + medicine consult'} },
   { icon:'fa-list-check', name:{bn:'ফুল বডি চেকআপ',en:'Full Body Checkup'}, price:{bn:'৳ ৬,৫০০',en:'৳ 6,500'},
     items:{bn:'৩৫+ পরীক্ষা, ইসিজি, আল্ট্রাসনোগ্রাম + ২ জন বিশেষজ্ঞের পরামর্শ',en:'35+ tests, ECG, Ultrasonogram + 2 specialist consults'} }
@@ -256,11 +258,11 @@ let TESTIMONIALS = [
   { name:'নুসরাত জাহান', loc:{bn:'মোহাম্মদপুর, ঢাকা',en:'Mohammadpur, Dhaka'}, rating:5,
     text:{bn:'অনলাইনে সিরিয়াল বুক করে গিয়ে বসেছি — কোনো ভিড় বা অপেক্ষা লাগেনি। ডা. ফারহানা ম্যাডামের আচরণ অসাধারণ।',en:'Booked my serial online and walked right in — no crowd, no waiting. Dr. Farhana is wonderful with patients.'} },
   { name:'মো. শাহাদাত হোসেন', loc:{bn:'যাত্রাবাড়ী, ঢাকা',en:'Jatrabari, Dhaka'}, rating:5,
-    text:{bn:'রাত ১১টায় বাচ্চার হঠাৎ জ্বরে জরুরি সেবা নিয়েছি। এত রাতেও ডাক্তার পাওয়া যাবে ভাবিনি। চিরকৃতজ্ঞ থাকব নিরাময়ের প্রতি।',en:'Took emergency service at 11 PM for my child\'s sudden fever. Never expected to find a doctor at that hour. Forever grateful to Niramoy.'} },
+    text:{bn:'রাত ১১টায় বাচ্চার হঠাৎ জ্বরে জরুরি সেবা নিয়েছি। এত রাতেও ডাক্তার পাওয়া যাবে ভাবিনি। চিরকৃতজ্ঞ থাকব নিরাময়ের প্রতি।',en:"Took emergency service at 11 PM for my child's sudden fever. Never expected to find a doctor at that hour. Forever grateful to Niramoy."} },
   { name:'তাহমিনা আক্তার', loc:{bn:'ধানমন্ডি, ঢাকা',en:'Dhanmondi, Dhaka'}, rating:4.5,
     text:{bn:'ভিডিও কলে ডাক্তারের পরামর্শ নিয়েছি — ঘরে বসেই WhatsApp-এ প্রেসক্রিপশন পেয়ে গেছি। বয়স্ক রোগীদের জন্য দারুণ সুবিধা।',en:'Consulted a doctor over video call and received the prescription on WhatsApp from home. A great facility for elderly patients.'} },
   { name:'আরিফুল ইসলাম', loc:{bn:'শ্যামলী, ঢাকা',en:'Shyamoli, Dhaka'}, rating:4.5,
-    text:{bn:'হোম স্যাম্পল কালেকশন সার্ভিসটা অসাধারণ। বাবার রক্ত পরীক্ষা বাসা থেকেই হলো, রিপোর্ট এসেছে ইমেইলে।',en:'The home sample collection service is amazing. My father\'s blood test was done at home and the report arrived by email.'} }
+    text:{bn:'হোম স্যাম্পল কালেকশন সার্ভিসটা অসাধারণ। বাবার রক্ত পরীক্ষা বাসা থেকেই হলো, রিপোর্ট এসেছে ইমেইলে।',en:"The home sample collection service is amazing. My father's blood test was done at home and the report arrived by email."} }
 ];
 
 const BLOGS = [
@@ -306,7 +308,7 @@ function renderDoctors(){
         </div>
         <div class="doc-foot">
           <span class="doc-fee">${L(d.fee)}</span>
-          <button class="doc-book" data-book="${d.id}"><i class="fa-regular fa-calendar-check"></i> ${t('doctors.book')}</button>
+          <button type="button" class="doc-book" data-book="${d.id}"><i class="fa-regular fa-calendar-check"></i> ${t('doctors.book')}</button>
         </div>
       </div>
     </div>`).join('');
@@ -335,7 +337,7 @@ function renderPackages(){
         <div><h3>${L(p.name)}</h3><small style="color:var(--muted)">${t('packages.includes')}</small></div>
         <div class="pkg-icon"><i class="fa-solid ${p.icon}"></i></div>
       </div>
-      <div class="pkg-price">${L(p.price)}<small style="font-size:12px">${LANG==='bn'?'সব কিছু মিলিয়ে':'all inclusive'}</small></div>
+      <div class="pkg-price">${L(p.price)}<small>${t('packages.allInclusive')}</small></div>
       <div class="pkg-items">${L(p.items).split(',').map(i => `<span><i class="fa-solid fa-check"></i>${i.trim()}</span>`).join('')}</div>
     </div>`).join('');
 }
@@ -347,7 +349,7 @@ function renderBlogs(){
       <div class="blog-body">
         <div class="blog-meta">
           <span><i class="fa-regular fa-calendar"></i> ${L(b.date)}</span>
-          <span><i class="fa-regular fa-clock"></i> ${LANG==='bn'? toBn(b.read)+' মিনিট পড়া' : b.read+' min read'}</span>
+          <span><i class="fa-regular fa-clock"></i> ${LANG === 'bn' ? toBn(b.read) + ' মিনিট পড়া' : b.read + ' min read'}</span>
         </div>
         <h3><a href="#">${L(b.title)}</a></h3>
         <p>${L(b.ex)}</p>
@@ -356,17 +358,17 @@ function renderBlogs(){
     </article>`).join('');
 }
 
-/* ---------- ৬) টাইম স্লট ---------- */
+/* ---------- ৬) টাইম স্লট ও সিলেক্ট ---------- */
 function timeSlots(){
   const out = [];
   for (let h = 10; h <= 20; h++) {
     let label;
     if (LANG === 'bn') {
-      if (h === 12)      label = 'দুপুর ১২টা';
-      else if (h < 12)   label = `সকাল ${toBn(h)}টা`;
-      else if (h < 16)   label = `দুপুর ${toBn(h-12)}টা`;
-      else if (h < 18)   label = `বিকেল ${toBn(h-12)}টা`;
-      else               label = `রাত ${toBn(h-12)}টা`;
+      if (h === 12)    label = 'দুপুর ১২টা';
+      else if (h < 12) label = `সকাল ${toBn(h)}টা`;
+      else if (h < 16) label = `দুপুর ${toBn(h - 12)}টা`;
+      else if (h < 18) label = `বিকেল ${toBn(h - 12)}টা`;
+      else             label = `রাত ${toBn(h - 12)}টা`;
     } else {
       const ap = h < 12 ? 'AM' : 'PM';
       const hh = h % 12 === 0 ? 12 : h % 12;
@@ -378,7 +380,6 @@ function timeSlots(){
 }
 
 function populateSelects(){
-  // ডাক্তার সিলেক্ট
   ['#apptDoctor', '#consDoctor'].forEach(sel => {
     const el = $(sel); if (!el) return;
     const prev = el.value;
@@ -386,7 +387,6 @@ function populateSelects(){
       DOCTORS.map(d => `<option value="${d.id}">${L(d.name)} — ${L(d.specialty)}</option>`).join('');
     if (prev) el.value = prev;
   });
-  // টাইম সিলেক্ট
   const tEl = $('#apptTime');
   if (tEl) {
     const prev = tEl.value;
@@ -402,9 +402,9 @@ let tIndex = 0, tTimer = null;
 const stars = r => {
   let h = '';
   for (let i = 1; i <= 5; i++) {
-    if (i <= Math.floor(r)) h += '<i class="fa-solid fa-star"></i>';
+    if (i <= Math.floor(r))        h += '<i class="fa-solid fa-star"></i>';
     else if (i === Math.ceil(r) && r % 1) h += '<i class="fa-solid fa-star-half-stroke"></i>';
-    else h += '<i class="fa-regular fa-star"></i>';
+    else                           h += '<i class="fa-regular fa-star"></i>';
   }
   return h;
 };
@@ -421,7 +421,7 @@ function buildTestimonials(){
       </div>
     </div>`).join('');
   $('#testiDots').innerHTML = TESTIMONIALS.map((_, i) =>
-    `<button class="dot ${i === tIndex ? 'active' : ''}" data-i="${i}" aria-label="review ${i+1}"></button>`).join('');
+    `<button type="button" class="dot ${i === tIndex ? 'active' : ''}" data-i="${i}" aria-label="review ${i + 1}"></button>`).join('');
   updateTesti();
 }
 function updateTesti(){
@@ -442,19 +442,22 @@ function applyI18n(){
   document.documentElement.lang = LANG;
   document.body.classList.toggle('lang-bn', LANG === 'bn');
   document.body.classList.toggle('lang-en', LANG === 'en');
-  $$('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
-  $$('[data-i18n-ph]').forEach(el => el.placeholder = t(el.dataset.i18nPh));
+  $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  $$('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   $('#langToggle').textContent = LANG === 'bn' ? 'EN' : 'বাংলা';
 
   renderServices(); renderDoctors(); renderSchedule();
   renderTests(); renderPackages(); renderBlogs();
   populateSelects(); buildTestimonials();
 
-  // কাউন্টার আগে অ্যানিমেট হয়ে থাকলে নতুন ভাষায় ফরম্যাট
+  const y = new Date().getFullYear();
+  const yearEl = $('#year');
+  if (yearEl) yearEl.textContent = LANG === 'bn' ? toBn(y) : y;
+
   $$('.stat-num').forEach(el => { if (el.dataset.done) el.textContent = fmtNum(+el.dataset.target); });
 }
 
-/* ---------- ৯) কাউন্টার অ্যানিমেশন ---------- */
+/* ---------- ৯) কাউন্টার ---------- */
 function animateCounter(el){
   const target = +el.dataset.target, dur = 1700, start = performance.now();
   (function step(now){
@@ -493,13 +496,16 @@ async function submitData(type, data){
   return { ref, source };
 }
 
-function handleForm(formSel, type, collect){
+function handleForm(formSel, type, requiredFields, collect){
   const form = $(formSel);
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const data = collect();
-    if (!data.name || data.name.trim().length < 3) return showToast(t('toast.err'), 'error');
-    if (!isValidPhone(data.phone))                return showToast(t('toast.phone'), 'error');
+
+    for (const f of requiredFields) {
+      if (!data[f] || !String(data[f]).trim()) return showToast(t('toast.err'), 'error');
+    }
+    if (!isValidPhone(data.phone)) return showToast(t('toast.phone'), 'error');
 
     const btn = form.querySelector('[type="submit"]');
     const original = btn.innerHTML;
@@ -541,7 +547,7 @@ function showToast(msg, type = 'success'){
   setTimeout(() => { item.classList.remove('show'); setTimeout(() => item.remove(), 450); }, 3500);
 }
 
-/* ---------- ১২) রিমোট ডাটা ফেচিং (Google Sheet থেকে) ---------- */
+/* ---------- ১২) রিমোট ডাটা ফেচিং (ঐচ্ছিক) ---------- */
 async function loadRemoteData(){
   if (!CONFIG.API_URL) return;
   try {
@@ -560,7 +566,7 @@ async function loadRemoteData(){
   } catch (e) { console.warn('Remote testimonials unavailable (using local data).'); }
 }
 
-/* ---------- ১৩) ইনিশিয়ালাইজ ---------- */
+/* ---------- ১৩) ইউটিলিটি ---------- */
 function setMinDates(){
   const today = new Date().toISOString().split('T')[0];
   ['#apptDate', '#consDate'].forEach(s => { const el = $(s); if (el) el.min = today; });
@@ -572,27 +578,27 @@ function applyTheme(mode){
   if (btn) btn.innerHTML = mode === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
 }
 
+/* ---------- ১৪) ইনিশিয়ালাইজেশন ---------- */
 function init(){
-  // থিম ও ভাষা
   applyTheme(localStorage.getItem('nhc_theme') || 'light');
   applyI18n();
   setMinDates();
 
-  // ভাষা টগল
+  /* ভাষা টগল */
   $('#langToggle').addEventListener('click', () => {
     LANG = LANG === 'bn' ? 'en' : 'bn';
     localStorage.setItem('nhc_lang', LANG);
     applyI18n();
   });
 
-  // ডার্ক মোড টগল
+  /* ডার্ক মোড টগল */
   $('#themeToggle').addEventListener('click', () => {
     const mode = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     localStorage.setItem('nhc_theme', mode);
     applyTheme(mode);
   });
 
-  // মোবাইল মেনু
+  /* মোবাইল মেনু */
   const burger = $('#hamburger');
   burger.addEventListener('click', () => {
     const open = $('#header').classList.toggle('open');
@@ -603,24 +609,119 @@ function init(){
     burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
   }));
 
-  // স্ক্রল: হেডার শ্যাডো + টু-টপ
+  /* স্ক্রল ইফেক্ট */
   window.addEventListener('scroll', () => {
     $('#header').classList.toggle('scrolled', scrollY > 10);
     $('#toTop').classList.toggle('show', scrollY > 500);
   }, { passive: true });
   $('#toTop').addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // রিভিল অ্যানিমেশন
-  const io = new IntersectionObserver(es => es.forEach(en => {
+  /* রিভিল অ্যানিমেশন */
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
     if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); }
   }), { threshold: .12 });
   $$('.reveal').forEach(el => io.observe(el));
 
-  // কাউন্টার
-  const co = new IntersectionObserver(es => es.forEach(en => {
+  /* হিরো কাউন্টার */
+  const co = new IntersectionObserver(entries => entries.forEach(en => {
     if (en.isIntersecting) { animateCounter(en.target); co.unobserve(en.target); }
   }), { threshold: .5 });
   $$('.stat-num').forEach(el => co.observe(el));
 
-  // ট্যাব
-  $
+  /* ট্যাব (পরীক্ষা / প্যাকেজ) */
+  $$('.tab-btn').forEach(btn => btn.addEventListener('click', () => {
+    $$('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+    $$('.tab-panel').forEach(p => p.classList.toggle('active', p.id === btn.dataset.tab));
+  }));
+
+  /* টেস্টিমোনিয়াল স্লাইডার কন্ট্রোল */
+  $('#testiPrev').addEventListener('click', () => { goTesti(tIndex - 1); startTestiTimer(); });
+  $('#testiNext').addEventListener('click', () => { goTesti(tIndex + 1); startTestiTimer(); });
+  $('#testiDots').addEventListener('click', e => {
+    const dot = e.target.closest('.dot');
+    if (dot) { goTesti(+dot.dataset.i); startTestiTimer(); }
+  });
+  $('#testiBox').addEventListener('mouseenter', () => clearInterval(tTimer));
+  $('#testiBox').addEventListener('mouseleave', startTestiTimer);
+  startTestiTimer();
+
+  /* ডাক্তার কার্ডের "সিরিয়াল নিন" বাটন → ফর্মে স্ক্রল + ডাক্তার সিলেক্ট */
+  document.addEventListener('click', e => {
+    const book = e.target.closest('.doc-book');
+    if (!book) return;
+    const sel = $('#apptDoctor');
+    if (sel) sel.value = book.dataset.book;
+    $('#appointment').scrollIntoView({ behavior: 'smooth' });
+    const card = $('#apptFormCard');
+    card.classList.remove('flash');
+    setTimeout(() => card.classList.add('flash'), 600);
+  });
+
+  /* মোডাল বন্ধ */
+  $('#modalClose').addEventListener('click', closeModal);
+  $('#successModal').addEventListener('click', e => { if (e.target.id === 'successModal') closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  /* তিনটি ফর্ম */
+  handleForm('#appointmentForm', 'appointment',
+    ['name', 'phone', 'doctorId', 'date', 'time'],
+    () => ({
+      name: $('#apptName').value.trim(),
+      phone: $('#apptPhone').value.trim(),
+      email: $('#apptEmail').value.trim(),
+      doctor: doctorName($('#apptDoctor').value),
+      doctorId: $('#apptDoctor').value,
+      date: $('#apptDate').value,
+      time: $('#apptTime').value,
+      problem: $('#apptProblem').value.trim()
+    }));
+
+  handleForm('#consultForm', 'consultation',
+    ['name', 'phone', 'doctorId', 'date'],
+    () => ({
+      name: $('#consName').value.trim(),
+      phone: $('#consPhone').value.trim(),
+      doctor: doctorName($('#consDoctor').value),
+      doctorId: $('#consDoctor').value,
+      date: $('#consDate').value,
+      platform: ($('#consPlatform').selectedOptions[0] || {}).textContent || '',
+      message: $('#consMsg').value.trim()
+    }));
+
+  handleForm('#inquiryForm', 'inquiry',
+    ['name', 'phone', 'subject', 'message'],
+    () => ({
+      name: $('#inqName').value.trim(),
+      phone: $('#inqPhone').value.trim(),
+      subject: ($('#inqSubject').selectedOptions[0] || {}).textContent || '',
+      message: $('#inqMsg').value.trim()
+    }));
+
+  /* রিমোট টেস্টিমোনিয়াল (Google Sheet কানেক্ট করলে) */
+  loadRemoteData();
+}
+
+/* ---------- ১৫) বুট: প্রিলোডার সরানো + শুরু ---------- */
+function hidePreloader(){
+  const pre = $('#preloader');
+  if (!pre) return;
+  pre.classList.add('hide');
+  setTimeout(() => pre.remove(), 700);
+}
+
+function boot(){
+  try {
+    init();
+  } catch (err) {
+    console.error('Init error:', err);
+  }
+  hidePreloader(); // init-এ সমস্যা হলেও প্রিলোডার সরে যাবেই
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}
+window.addEventListener('load', hidePreloader); // সব রিসোর্স লোড শেষ হলেও
+setTimeout(hidePreloader, 4000);                // 🛡 সেফটি নেট: যেকোনো কারণে আটকে থাকলে ৪ সেকেন্ড পরে
