@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>নিরাময় হেলথ কেয়ার | Niramoy Health Care — ধানমন্ডি, ঢাকা</title>
+  <meta name="description" content="ধানমন্ডি, ঢাকার বিশ্বস্ত স্বাস্থ্যসেবা কেন্দ্র — বিশেষজ্ঞ ডাক্তার, প্যাথলজি পরীক্ষা, হেলথ প্যাকেজ ও অনলাইন পরামর্শ।">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+
+  <!-- Google Fonts: Hind Siliguri (বাংলা) + Poppins (English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-bn">
+
+  <!-- ===== প্রিলোডার ===== -->
+  <div id="preloader">
+    <div class="loader-pulse"><i class="fa-solid fa-heart-pulse"></i></div>
+    <p class="loader-text">নিরাময় হেলথ কেয়ার</p>
+  </div>
+
+  <!-- ===== টপবার ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="topbar.address">বাড়ি ২৭ (৩য় তলা), রোড ৫, ধানমন্ডি, ঢাকা ১২০৫</span></span>
+        <span class="hide-sm"><i class="fa-regular fa-clock"></i> <span data-i18n="topbar.hours">শনি–বৃহস্পতি: সকাল ৯টা – রাত ৯টা</span></span>
+      </div>
+      <a href="tel:+8801712345678" class="topbar-emergency">
+        <i class="fa-solid fa-phone-volume"></i> <span data-i18n="topbar.emergency">জরুরি হটলাইন:</span> <b>+880 1712-345678</b>
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== হেডার / নেভিগেশন ===== -->
+  <header id="header">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div>
+          <b class="logo-name"><span data-i18n="brand.name">নিরাময় হেলথ কেয়ার</span></b>
+          <small class="logo-sub">NIRAMOY HEALTH CARE</small>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="#home" data-i18n="nav.home">হোম</a>
+        <a href="#services" data-i18n="nav.services">সেবাসমূহ</a>
+        <a href="#doctors" data-i18n="nav.doctors">ডাক্তারগণ</a>
+        <a href="#schedule" data-i18n="nav.schedule">সময়সূচি</a>
+        <a href="#packages" data-i18n="nav.packages">পরীক্ষা ও প্যাকেজ</a>
+        <a href="#blog" data-i18n="nav.blog">স্বাস্থ্য ব্লগ</a>
+        <a href="#contact" data-i18n="nav.contact">যোগাযোগ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="langToggle" class="btn-pill" aria-label="Switch language">EN</button>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="#appointment" class="btn btn-primary btn-sm hide-sm"><i class="fa-regular fa-calendar-check"></i> <span data-i18n="nav.book">অ্যাপয়েন্টমেন্ট</span></a>
+        <button id="hamburger" class="icon-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== হিরো সেকশন ===== -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="hero-badge reveal"><i class="fa-solid fa-shield-heart"></i> <span data-i18n="hero.badge">ধানমন্ডির বিশ্বস্ত স্বাস্থ্যসেবা কেন্দ্র</span></span>
+        <h1 class="reveal d1">
+          <span data-i18n="hero.title1">আপনার সুস্থ আগামী,</span><br>
+          <span class="highlight" data-i18n="hero.title2">আমাদের অঙ্গীকার</span>
+        </h1>
+        <p class="hero-desc reveal d2" data-i18n="hero.desc">অভিজ্ঞ বিশেষজ্ঞ ডাক্তার, আধুনিক প্যাথলজি ল্যাব ও আন্তরিক সেবা — সবই এক ছাদের নিচে। ঘরে বসেই অনলাইনে অ্যাপয়েন্টমেন্ট নিন অথবা ভিডিও কলে ডাক্তারের পরামর্শ নিন।</p>
+        <div class="hero-btns reveal d2">
+          <a href="#appointment" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> <span data-i18n="hero.cta1">অ্যাপয়েন্টমেন্ট নিন</span></a>
+          <a href="#services" class="btn btn-outline"><span data-i18n="hero.cta2">সেবাসমূহ দেখুন</span> <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-stats reveal d3">
+          <div class="stat"><span class="stat-num" data-target="15">0</span><span class="stat-plus">+</span><small data-i18n="hero.stat1">বছরের অভিজ্ঞতা</small></div>
+          <div class="stat"><span class="stat-num" data-target="50000">0</span><span class="stat-plus">+</span><small data-i18n="hero.stat2">সন্তুষ্ট রোগী</small></div>
+          <div class="stat"><span class="stat-num" data-target="10">0</span><span class="stat-plus">+</span><small data-i18n="hero.stat3">বিশেষজ্ঞ ডাক্তার</small></div>
+          <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-plus">+</span><small data-i18n="hero.stat4">ল্যাব পরীক্ষা</small></div>
+        </div>
+      </div>
+
+      <!-- ১:১ হিরো ইমেজ (নিজের ডাক্তারের ছবি দিয়ে রিপ্লেস করুন, ৭০০×৭০০px) -->
+      <div class="hero-visual reveal d2">
+        <div class="hero-ring"></div>
+        <div class="hero-frame">
+          <img src="https://placehold.co/700x700/ccfbf1/0e7490?text=Doctor+Photo+1%3A1" alt="ডাক্তার" id="heroImg">
+        </div>
+        <div class="float-badge badge-1">
+          <div class="fb-icon gold"><i class="fa-solid fa-star"></i></div>
+          <div><b data-i18n="hero.b1a">৪.৯/৫ রেটিং</b><small data-i18n="hero.b1b">৩,২০০+ রোগীর রিভিউ</small></div>
+        </div>
+        <div class="float-badge badge-2">
+          <div class="fb-icon red"><i class="fa-solid fa-truck-medical"></i></div>
+          <div><b data-i18n="hero.b2a">২৪/৭ জরুরি সেবা</b><small data-i18n="hero.b2b">যেকোনো সময় কল করুন</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== সেবাসমূহ ===== -->
+  <section id="services" class="sec-alt">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-briefcase-medical"></i> <span data-i18n="services.eyebrow">আমাদের সেবা</span></span>
+        <h2 class="sec-title" data-i18n="services.title">আপনার প্রয়োজনীয় সব সেবা এক জায়গায়</h2>
+        <p class="sec-desc" data-i18n="services.desc">পরামর্শ থেকে পরীক্ষা — বাংলাদেশের বাজারমূল্যে সাশ্রয়ী ও নির্ভরযোগ্য স্বাস্থ্যসেবা।</p>
+      </div>
+      <div id="servicesGrid" class="grid-4 reveal"></div>
+    </div>
+  </section>
+
+  <!-- ===== ডাক্তার প্রোফাইল ===== -->
+  <section id="doctors">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-user-doctor"></i> <span data-i18n="doctors.eyebrow">আমাদের ডাক্তারগণ</span></span>
+        <h2 class="sec-title" data-i18n="doctors.title">অভিজ্ঞ ও বিশ্বস্ত বিশেষজ্ঞ চিকিৎসকবৃন্দ</h2>
+        <p class="sec-desc" data-i18n="doctors.desc">প্রতিটি রোগীর প্রতি মনোযোগী শ্রবণ ও আধুনিক চিকিৎসা — এটাই আমাদের অঙ্গীকার।</p>
+      </div>
+      <div id="doctorsGrid" class="grid-4 reveal"></div>
+    </div>
+  </section>
+
+  <!-- ===== চেম্বার সময়সূচি ===== -->
+  <section id="schedule" class="sec-alt">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><i class="fa-regular fa-clock"></i> <span data-i18n="schedule.eyebrow">চেম্বার সময়সূচি</span></span>
+        <h2 class="sec-title" data-i18n="schedule.title">ডাক্তারদের চেম্বারের সময়</h2>
+        <p class="sec-desc" data-i18n="schedule.desc">সিরিয়ালের জন্য অগ্রিম বুক করুন — অপেক্ষার ঝামেলা এড়িয়ে চলুন।</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th data-i18n="schedule.doctor">ডাক্তার</th>
+              <th data-i18n="schedule.specialty">বিশেষত্ব</th>
+              <th data-i18n="schedule.days">দিন</th>
+              <th data-i18n="schedule.time">সময়</th>
+              <th data-i18n="schedule.fee">ফি</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleBody"></tbody>
+        </table>
+      </div>
+      <p class="schedule-note reveal"><i class="fa-solid fa-circle-info"></i> <span data-i18n="schedule.note">শুক্রবার: বিকেল ৩টা – রাত ৯টা (সীমিত সেবা)। সিরিয়ালের জন্য কল করুন: +880 1712-345678</span></p>
+    </div>
+  </section>
+
+  <!-- ===== পরীক্ষা ও প্যাকেজ ===== -->
+  <section id="packages">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-flask-vial"></i> <span data-i18n="packages.eyebrow">পরীক্ষা ও প্যাকেজ</span></span>
+        <h2 class="sec-title" data-i18n="packages.title">সাশ্রয়ী মূল্যে নির্ভরযোগ্য পরীক্ষা</h2>
+        <p class="sec-desc" data-i18n="packages.desc">আধুনিক যন্ত্রপাতি ও অভিজ্ঞ টেকনোলজিস্ট — নির্ভুল রিপোর্টের নিশ্চয়তা।</p>
+      </div>
+
+      <div class="tabs reveal">
+        <button class="tab-btn active" data-tab="panelTests"><i class="fa-solid fa-vials"></i> <span data-i18n="packages.tab1">প্যাথলজি পরীক্ষা</span></button>
+        <button class="tab-btn" data-tab="panelPackages"><i class="fa-solid fa-box-open"></i> <span data-i18n="packages.tab2">হেলথ প্যাকেজ</span></button>
+      </div>
+
+      <div id="panelTests" class="tab-panel active reveal"><div id="testsList" class="grid-2"></div></div>
+      <div id="panelPackages" class="tab-panel reveal"><div id="packagesList" class="grid-3"></div></div>
+
+      <p class="schedule-note reveal"><i class="fa-solid fa-truck-fast"></i> <span data-i18n="packages.note">রিপোর্ট ডেলিভারি: ২৪ ঘণ্টার মধ্যে (হার্ডকপি / ইমেইল / WhatsApp)। ঢাকার ভেতরে হোম স্যাম্পল কালেকশন সুবিধা আছে।</span></p>
+    </div>
+  </section>
+
+  <!-- ===== অ্যাপয়েন্টমেন্ট বুকিং ===== -->
+  <section id="appointment" class="sec-alt">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><i class="fa-regular fa-calendar-check"></i> <span data-i18n="appt.eyebrow">অ্যাপয়েন্টমেন্ট</span></span>
+        <h2 class="sec-title" data-i18n="appt.title">অনলাইনে সিরিয়াল বুক করুন</h2>
+        <p class="sec-desc" data-i18n="appt.desc">ফর্ম পূরণ করুন — আমাদের প্রতিনিধি ফোনে কনফার্ম করবেন।</p>
+      </div>
+      <div class="appt-wrap reveal">
+        <aside class="appt-info">
+          <h3><i class="fa-solid fa-house-medical-circle-check"></i> <span data-i18n="appt.infoTitle">চেম্বার তথ্য</span></h3>
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i> <span data-i18n="appt.addr">বাড়ি ২৭ (৩য় তলা), রোড ৫, ধানমন্ডি, ঢাকা ১২০৫</span></li>
+            <li><i class="fa-regular fa-clock"></i> <span data-i18n="appt.open">শনি–বৃহস্পতি: সকাল ৯টা – রাত ৯টা</span></li>
+            <li><i class="fa-regular fa-clock"></i> <span data-i18n="appt.fri">শুক্রবার: বিকেল ৩টা – রাত ৯টা</span></li>
+            <li><i class="fa-solid fa-phone-volume"></i> <span data-i18n="appt.hotline">সিরিয়াল / হটলাইন:</span> <a href="tel:+8801712345678">+880 1712-345678</a></li>
+          </ul>
+          <p class="appt-note" data-i18n="appt.note">নোট: অ্যাপয়েন্টমেন্ট নিশ্চিত হলে SMS বা ফোনে জানানো হবে।</p>
+        </aside>
+
+        <div class="form-card" id="apptFormCard">
+          <form id="appointmentForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="apptName" data-i18n="form.name">রোগীর নাম *</label>
+                <input type="text" id="apptName" class="form-control" data-i18n-ph="form.namePh" placeholder="যেমন: মো. রফিকুল ইসলাম" required>
+              </div>
+              <div class="form-group">
+                <label for="apptPhone" data-i18n="form.phone">মোবাইল নম্বর *</label>
+                <input type="tel" id="apptPhone" class="form-control" placeholder="01XXXXXXXXX" required>
+              </div>
+              <div class="form-group">
+                <label for="apptEmail" data-i18n="form.email">ইমেইল (ঐচ্ছিক)</label>
+                <input type="email" id="apptEmail" class="form-control" placeholder="you@email.com">
+              </div>
+              <div class="form-group">
+                <label for="apptDoctor" data-i18n="form.doctor">ডাক্তার নির্বাচন *</label>
+                <select id="apptDoctor" class="form-control" required></select>
+              </div>
+              <div class="form-group">
+                <label for="apptDate" data-i18n="form.date">তারিখ *</label>
+                <input type="date" id="apptDate" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="apptTime" data-i18n="form.time">পছন্দের সময় *</label>
+                <select id="apptTime" class="form-control" required></select>
+              </div>
+              <div class="form-group full">
+                <label for="apptProblem" data-i18n="form.problem">সমস্যার বিবরণ (ঐচ্ছিক)</label>
+                <textarea id="apptProblem" class="form-control" data-i18n-ph="form.problemPh" placeholder="আপনার সমস্যা সংক্ষেপে লিখুন..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa-regular fa-paper-plane"></i> <span data-i18n="form.submitAppt">অ্যাপয়েন্টমেন্ট কনফার্ম করুন</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== অনলাইন পরামর্শ ===== -->
+  <section id="consult">
+    <div class="container consult-wrap">
+      <div class="consult-info reveal">
+        <span class="eyebrow left"><i class="fa-solid fa-video"></i> <span data-i18n="consult.eyebrow">অনলাইন পরামর্শ</span></span>
+        <h2 class="sec-title left" data-i18n="consult.title">ঘরে বসেই ডাক্তারের পরামর্শ</h2>
+        <p class="sec-desc left" data-i18n="consult.desc">ভিডিও বা অডিও কলে বিশেষজ্ঞ ডাক্তারের পরামর্শ নিন — ঢাকার বাইরে থাকলেও সমস্যা নেই।</p>
+        <div class="feature-row">
+          <div class="feature"><i class="fa-solid fa-video"></i><div><b data-i18n="consult.f1t">ভিডিও/অডিও কল</b><small data-i18n="consult.f1d">নির্ধারিত সময়ে লিংক পাবেন</small></div></div>
+          <div class="feature"><i class="fa-solid fa-tags"></i><div><b data-i18n="consult.f2t">মাত্র ৳ ৫০০</b><small data-i18n="consult.f2d">চেম্বার ভিজিটের চেয়ে সাশ্রয়ী</small></div></div>
+          <div class="feature"><i class="fa-solid fa-file-prescription"></i><div><b data-i18n="consult.f3t">ডিজিটাল প্রেসক্রিপশন</b><small data-i18n="consult.f3d">PDF হিসেবে ইমেইল/WhatsApp-এ</small></div></div>
+        </div>
+        <div class="steps">
+          <b data-i18n="consult.steps">কীভাবে কাজ করে?</b>
+          <div class="steps-row">
+            <span data-i18n="consult.s1">১. ফর্ম পূরণ করুন</span><i class="fa-solid fa-angles-right"></i>
+            <span data-i18n="consult.s2">২. কনফার্মেশন কল</span><i class="fa-solid fa-angles-right"></i>
+            <span data-i18n="consult.s3">৩. মিটিং লিংক</span><i class="fa-solid fa-angles-right"></i>
+            <span data-i18n="consult.s4">৪. ভিডিও পরামর্শ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card reveal d1">
+        <form id="consultForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group"><label for="consName" data-i18n="form.name">নাম *</label><input type="text" id="consName" class="form-control" data-i18n-ph="form.namePh" placeholder="আপনার নাম" required></div>
+            <div class="form-group"><label for="consPhone" data-i18n="form.phone">মোবাইল নম্বর *</label><input type="tel" id="consPhone" class="form-control" placeholder="01XXXXXXXXX" required></div>
+            <div class="form-group"><label for="consDoctor" data-i18n="form.doctor">ডাক্তার নির্বাচন *</label><select id="consDoctor" class="form-control" required></select></div>
+            <div class="form-group"><label for="consDate" data-i18n="form.date">পছন্দের তারিখ *</label><input type="date" id="consDate" class="form-control" required></div>
+            <div class="form-group full"><label for="consPlatform" data-i18n="form.platform">পছন্দের মাধ্যম</label>
+              <select id="consPlatform" class="form-control">
+                <option value="google-meet">Google Meet (ফ্রি)</option>
+                <option value="zoom">Zoom</option>
+                <option value="phone" data-i18n="form.platPhone">শুধু ফোন কল</option>
+              </select>
+            </div>
+            <div class="form-group full"><label for="consMsg" data-i18n="form.message">বক্তব্য</label><textarea id="consMsg" class="form-control" data-i18n-ph="form.msgPh" placeholder="আপনার সমস্যা সংক্ষেপে লিখুন..."></textarea></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-headset"></i> <span data-i18n="form.submitCons">পরামর্শের অনুরোধ পাঠান</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== রোগীদের মতামত ===== -->
+  <section id="testimonials" class="sec-alt">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-quote-left"></i> <span data-i18n="testi.eyebrow">রোগীদের মতামত</span></span>
+        <h2 class="sec-title" data-i18n="testi.title">রোগীরা আমাদের সম্পর্কে যা বলেন</h2>
+        <p class="sec-desc" data-i18n="testi.desc">৫০,০০০+ রোগীর আস্থা — আমাদের সবচেয়ে বড় অর্জন।</p>
+      </div>
+      <div class="testi-box reveal" id="testiBox">
+        <button class="testi-ctrl" id="testiPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="testi-viewport"><div class="testi-track" id="testiTrack"></div></div>
+        <button class="testi-ctrl" id="testiNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="testi-dots" id="testiDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== স্বাস্থ্য ব্লগ ===== -->
+  <section id="blog">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="blog.eyebrow">স্বাস্থ্য ব্লগ</span></span>
+        <h2 class="sec-title" data-i18n="blog.title">স্বাস্থ্য সম্পর্কে জেনে রাখুন</h2>
+        <p class="sec-desc" data-i18n="blog.desc">আমাদের বিশেষজ্ঞ ডাক্তারদের লেখা সহজ ভাষার স্বাস্থ্য পরামর্শ।</p>
+      </div>
+      <div id="blogGrid" class="grid-3 reveal"></div>
+    </div>
+  </section>
+
+  <!-- ===== যোগাযোগ + ম্যাপ + জিজ্ঞাসা ===== -->
+  <section id="contact" class="sec-alt">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-map-location-dot"></i> <span data-i18n="contact.eyebrow">যোগাযোগ</span></span>
+        <h2 class="sec-title" data-i18n="contact.title">চেম্বারে আসুন অথবা খোঁজ নিন</h2>
+        <p class="sec-desc" data-i18n="contact.desc">আমাদের ঠিকানা, ফোন ও লোকেশন ম্যাপ — সাথে সরাসরি প্রশ্ন করার সুবিধা।</p>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="contact-cards reveal">
+          <div class="c-card"><div class="c-icon"><i class="fa-solid fa-location-dot"></i></div><div><small data-i18n="contact.addrT">ঠিকানা</small><b data-i18n="contact.addrV">বাড়ি ২৭ (৩য় তলা), রোড ৫, ধানমন্ডি, ঢাকা ১২০৫</b></div></div>
+          <div class="c-card"><div class="c-icon"><i class="fa-solid fa-phone-volume"></i></div><div><small data-i18n="contact.phoneT">ফোন</small><b><a href="tel:+8801712345678">+880 1712-345678</a><br><a href="tel:+88029612345">+880 2-9612345</a></b></div></div>
+          <div class="c-card"><div class="c-icon"><i class="fa-regular fa-envelope"></i></div><div><small data-i18n="contact.emailT">ইমেইল</small><b><a href="mailto:info@niramoyhealth.com.bd">info@niramoyhealth.com.bd</a></b></div></div>
+          <div class="c-card"><div class="c-icon"><i class="fa-regular fa-clock"></i></div><div><small data-i18n="contact.hoursT">খোলার সময়</small><b data-i18n="appt.open">শনি–বৃহস্পতি: সকাল ৯টা – রাত ৯টা</b></div></div>
+        </div>
+
+        <div class="form-card reveal d1">
+          <h3 class="form-title"><i class="fa-regular fa-comment-dots"></i> <span data-i18n="inquiry.title">রোগীর জিজ্ঞাসা</span></h3>
+          <p class="form-sub" data-i18n="inquiry.desc">যেকোনো প্রশ্ন থাকলে ফর্মটি পূরণ করুন — আমরা ২৪ ঘণ্টার মধ্যে উত্তর দিই।</p>
+          <form id="inquiryForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group"><label for="inqName" data-i18n="form.name">নাম *</label><input type="text" id="inqName" class="form-control" required></div>
+              <div class="form-group"><label for="inqPhone" data-i18n="form.phone">মোবাইল নম্বর *</label><input type="tel" id="inqPhone" class="form-control" placeholder="01XXXXXXXXX" required></div>
+              <div class="form-group full"><label for="inqSubject" data-i18n="form.subject">বিষয় *</label>
+                <select id="inqSubject" class="form-control" required>
+                  <option value="appointment" data-i18n="form.subj1">অ্যাপয়েন্টমেন্ট সংক্রান্ত</option>
+                  <option value="report" data-i18n="form.subj2">রিপোর্ট সংক্রান্ত</option>
+                  <option value="package" data-i18n="form.subj3">প্যাকেজ / পরীক্ষার মূল্য</option>
+                  <option value="other" data-i18n="form.subj4">অন্যান্য</option>
+                </select>
+              </div>
+              <div class="form-group full"><label for="inqMsg" data-i18n="form.message">বক্তব্য *</label><textarea id="inqMsg" class="form-control" required></textarea></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa-regular fa-paper-plane"></i> <span data-i18n="form.submitInq">প্রশ্ন পাঠান</span></button>
+          </form>
+        </div>
+      </div>
+
+      <!-- গুগল ম্যাপ -->
+      <div class="map-wrap reveal">
+        <iframe src="https://www.google.com/maps?q=Road+5,+Dhanmondi,+Dhaka+1205&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Map — নিরাময় হেলথ কেয়ার"></iframe>
+        <a class="btn btn-primary map-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Road+5,+Dhanmondi,+Dhaka+1205"><i class="fa-solid fa-diamond-turn-right"></i> <span data-i18n="contact.directions">Google Maps-এ নির্দেশনা</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ফুটার ===== -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <a href="#home" class="logo footer-logo">
+          <div class="logo-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div><b class="logo-name"><span data-i18n="brand.name">নিরাময় হেলথ কেয়ার</span></b><small class="logo-sub">NIRAMOY HEALTH CARE</small></div>
+        </a>
+        <p class="footer-about" data-i18n="footer.about">২০১০ সাল থেকে ধানমন্ডির প্রাণকেন্দ্রে নির্ভরযোগ্য ও সাশ্রয়ী স্বাস্থ্যসেবা দিয়ে আসছি। আপনার সুস্থ আগামীই আমাদের অঙ্গীকার।</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="footer.links">দ্রুত লিংক</h4>
+        <ul class="footer-links">
+          <li><a href="#services" data-i18n="nav.services">সেবাসমূহ</a></li>
+          <li><a href="#doctors" data-i18n="nav.doctors">ডাক্তারগণ</a></li>
+          <li><a href="#schedule" data-i18n="nav.schedule">সময়সূচি</a></li>
+          <li><a href="#packages" data-i18n="nav.packages">পরীক্ষা ও প্যাকেজ</a></li>
+          <li><a href="#blog" data-i18n="nav.blog">স্বাস্থ্য ব্লগ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.services">সেবাসমূহ</h4>
+        <ul class="footer-links">
+          <li><a href="#appointment" data-i18n="foot.s1">ডাক্তার পরামর্শ</a></li>
+          <li><a href="#consult" data-i18n="foot.s2">অনলাইন পরামর্শ</a></li>
+          <li><a href="#packages" data-i18n="foot.s3">প্যাথলজি ল্যাব</a></li>
+          <li><a href="#packages" data-i18n="foot.s4">হেলথ প্যাকেজ</a></li>
+          <li><a href="#services" data-i18n="foot.s5">হোম স্যাম্পল কালেকশন</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.contactT">যোগাযোগ</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot"></i> <span data-i18n="contact.addrV">বাড়ি ২৭ (৩য় তলা), রোড ৫, ধানমন্ডি, ঢাকা ১২০৫</span></li>
+          <li><i class="fa-solid fa-phone"></i> +880 1712-345678</li>
+          <li><i class="fa-regular fa-envelope"></i> info@niramoyhealth.com.bd</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© <span id="year"></span> <span data-i18n="brand.name">নিরাময় হেলথ কেয়ার</span> — <span data-i18n="footer.rights">সর্বস্বত্ব সংরক্ষিত</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- সাকসেস মোডাল -->
+  <div id="successModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
+      <h3 data-i18n="modal.success">অনুরোধ সফল হয়েছে!</h3>
+      <p data-i18n="modal.msg">আপনার অনুরোধ আমরা পেয়েছি। আমাদের প্রতিনিধি শীঘ্রই ফোনে যোগাযোগ করে নিশ্চিত করবেন। রেফারেন্স নম্বরটি সংরক্ষণ করুন।</p>
+      <div class="modal-ref"><small data-i18n="modal.ref">রেফারেন্স নম্বর</small><b id="modalRef"></b></div>
+      <p class="modal-source" id="modalSource"></p>
+      <button class="btn btn-primary" id="modalClose" data-i18n="modal.close">ঠিক আছে</button>
+    </div>
+  </div>
+
+  <!-- টোস্ট + স্ক্রল টু টপ -->
+  <div id="toast"></div>
+  <button id="toTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
