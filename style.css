@@ -366,3 +366,6 @@ footer h4::after{content:'';position:absolute;left:0;bottom:0;width:36px;height:
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
 }
+/* ---------- প্রিলোডার ফেইল-সেফ: JS কোনো কারণে ব্যর্থ হলেও 3 সেকেন্ড পরে নিজে থেকেই উঠে যাবে ---------- */
+@keyframes preloaderAutoHide{to{opacity:0;visibility:hidden;pointer-events:none}}
+#preloader{animation:preloaderAutoHide .5s ease 3s forwards}
